@@ -1,0 +1,73 @@
+<mat-card class="cardWithShadow">
+  <mat-card-content class="p-24">
+    <div class="row justify-content-between">
+      <div class="col-lg-4">
+        <mat-form-field appearance="outline" class="w-100 hide-hint">
+          <input matInput placeholder="Buscar empleado" (keyup)="applyFilter($any($event.target).value)" />
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-4 d-flex align-items-center justify-content-end mt-xs-12 mt-lg-0">
+        <button mat-flat-button color="primary" (click)="addNuevo()">
+          Nuevo empleado
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-card class="cardWithShadow">
+  <mat-card-content class="p-24">
+    <div class="table-responsive">
+      <table mat-table [dataSource]="dataSource" class="w-100">
+        <ng-container matColumnDef="#">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">#</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Nombre</th>
+          <td mat-cell *matCellDef="let r">{{ r.nombre }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="correo">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Correo</th>
+          <td mat-cell *matCellDef="let r">{{ r.correo }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="telefono">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Teléfono</th>
+          <td mat-cell *matCellDef="let r">{{ r.telefono }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="fechaIngreso">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Fecha de ingreso</th>
+          <td mat-cell *matCellDef="let r">{{ r.fechaIngreso | date: 'fullDate' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="salario">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Salario</th>
+          <td mat-cell *matCellDef="let r">{{ r.salario | number:'1.2-2' }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef class="f-s-16 f-w-600">Acciones</th>
+          <td mat-cell *matCellDef="let r" class="action-link">
+            <button mat-icon-button color="primary" (click)="editar(r)" aria-label="Editar">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="eliminar(r)" aria-label="Eliminar">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

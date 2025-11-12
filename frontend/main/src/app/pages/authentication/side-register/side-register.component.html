@@ -1,0 +1,154 @@
+<div class="blank-layout-container justify-content-center">
+  <div class="position-relative row w-100 h-100">
+    <div class="col-lg-4">
+      <div
+        class="d-flex align-items-start align-items-lg-center justify-content-center h-100"
+      >
+        <div class="row justify-content-center w-100 h-100 align-items-center">
+          <div class="col-lg-9 max-width-form">
+           <a [routerLink]="['/']">
+              <img
+                src="./assets/images/logos/logo.png"
+                class="align-middle m-2"
+                width="120"
+                style="height:auto;"
+                alt="logo"
+              />
+            </a>
+            <h4 class="f-w-700 f-s-24 m-t-24 m-b-8">Registrarse</h4>
+            <span class="f-s-14 d-block mat-body-1 m-t-8"
+              >Crea tu cuenta</span
+            >
+
+            <div class="row m-t-24">
+              <div class="col-6">
+                <button mat-stroked-button class="w-100">
+                  <div class="d-flex align-items-center">
+                    <img
+                      src="/assets/images/svgs/google-icon.svg"
+                      alt="google"
+                      width="16"
+                      class="m-r-8"
+                    />
+                    Google
+                  </div>
+                </button>
+              </div>
+              <div class="col-6">
+                <button
+                  mat-stroked-button
+                  class="w-100 d-flex align-items-center"
+                >
+                  <div class="d-flex align-items-center">
+                    <img
+                      src="/assets/images/svgs/facebook-icon.svg"
+                      alt="facebook"
+                      width="40"
+                      class="m-r-4"
+                    />
+                    Facebook
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            <div class="or-border m-t-30">o regístrate con</div>
+
+            <form class="m-t-30" [formGroup]="form" (ngSubmit)="submit()">
+              <mat-label class="f-s-14 f-w-600 m-b-12 d-block">Nombre</mat-label>
+              <mat-form-field
+                appearance="outline"
+                class="w-100"
+                color="primary"
+              >
+                <input matInput formControlName="uname" />
+                @if(f['uname'].touched && f['uname'].invalid) {
+                <mat-hint class="m-b-16 error-msg">
+                  @if(f['uname'].errors && f['uname'].errors['required']) {
+                  <div class="text-error">El nombre es obligatorio.</div>
+                  } @if(f['uname'].errors && f['uname'].errors['minlength']) {
+                  <div class="text-error">El nombre debe tener al menos 6 caracteres.</div>
+                  }
+                </mat-hint>
+                }
+              </mat-form-field>
+              <!-- email -->
+              <mat-label class="f-s-14 f-w-600 m-b-12 d-block"
+                >Correo electrónico</mat-label
+              >
+              <mat-form-field
+                appearance="outline"
+                class="w-100"
+                color="primary"
+              >
+                <input matInput type="email" formControlName="email" />
+                @if(f['email'].touched && f['email'].invalid) {
+                <mat-hint class="m-b-16 error-msg">
+                  @if(f['email'].errors && f['email'].errors['required']) {
+                  <div class="text-error">El correo es obligatorio.</div>
+                  }
+                </mat-hint>
+                }
+              </mat-form-field>
+              <!-- password -->
+              <mat-label class="f-s-14 f-w-600 m-b-12 d-block"
+                >Contraseña</mat-label
+              >
+              <mat-form-field
+                appearance="outline"
+                class="w-100"
+                color="primary"
+              >
+                <input matInput type="password" formControlName="password" />
+                @if(f['password'].touched && f['password'].invalid) {
+                <mat-hint class="m-b-16 error-msg">
+                  @if( f['password'].errors && f['password'].errors['required'])
+                  {
+                  <div class="text-error">La contraseña es obligatoria.</div>
+                  }
+                </mat-hint>
+                }
+              </mat-form-field>
+
+              <button
+                mat-flat-button
+                color="primary"
+                class="w-100"
+                [disabled]="!form.valid"
+              >
+                Registrarse
+              </button>
+              <!-- input -->
+            </form>
+            <span class="d-block f-w-500 d-block m-t-24"
+              >¿Ya tienes una cuenta?
+              <a
+                [routerLink]="['/authentication/login']"
+                class="text-decoration-none text-primary f-w-500 f-s-14"
+              >
+                Inicia sesión</a
+              >
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+<div class="col-lg-8 p-0 d-none d-lg-block" style="position:relative; min-height:100vh;">
+      <img src="/assets/images/logos/fondo.jpg" alt="Fondo" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center; background:#f5f5f5; z-index:0;" />
+      <div class="d-flex align-items-center" style="position:absolute; inset:0; z-index:2;">
+        <div class="row justify-content-center w-100">
+          <div class="col-lg-6">
+            <h2 class="f-s-40 m-b-16" style="color:#000;">
+              Bienvenido a <br />
+              Copycom
+            </h2>
+            <span class="op-75 f-s-16 d-block m-b-16" style="color:#000;">
+              Somos una empresa con variedad de servicios de<br />
+              impresión,calidad y cumplimos los expectativas de nuestros clientes.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
